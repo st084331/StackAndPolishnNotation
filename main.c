@@ -123,25 +123,23 @@ int f2(struct Node **head) {
             } else if (val == '+' || val == '-' || val == '*' || val == '/' || val == 's') {
                 power = 0;
                 dig = -1;
+                int first = pop(head);
+                int second = pop(head);
                 switch (val) {
                     case '+':
-                        push(head, pop(head) + pop(head));
+                        push(head, second + first);
                         listprint(*head);
                         break;
                     case '-':
-                        push(head, pop(head) - pop(head));
+                        push(head, second - first);
                         listprint(*head);
                         break;
                     case '*':
-                        push(head, pop(head) * pop(head));
+                        push(head, second * first);
                         listprint(*head);
                         break;
                     case '/':
-                        push(head, pop(head) / pop(head));
-                        listprint(*head);
-                        break;
-                    case 's':
-                        push(head, sin(pop(head)));
+                        push(head, second / first);
                         listprint(*head);
                         break;
                 }
@@ -205,6 +203,6 @@ void f1(struct Node_char **head) {
 int main() {
     struct Node_char *head = NULL;
     //printf("%d", f2(&head));
-    f1(&head);
+    f2(&head);
     return 0;
 }
